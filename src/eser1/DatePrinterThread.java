@@ -1,7 +1,7 @@
 /**
  * 
  */
-package es3;
+package eser1;
 
 import java.util.Calendar;
 
@@ -9,21 +9,20 @@ import java.util.Calendar;
  * @author nedo1993
  *
  */
-public class DatePrinterRunnable implements Runnable{
+public class DatePrinterThread extends Thread {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		DatePrinterRunnable newTh = new DatePrinterRunnable();
-		Thread startTh = new Thread(newTh);
-		startTh.start();
+		DatePrinterThread newTh = new DatePrinterThread();
+		newTh.start();
 		System.out.println(Thread.currentThread().getName());
 
 	}
+	@Override
 	public void run() {
-		int now = 0;
 		while(true) {
 			System.out.println(Calendar.getInstance().getTime());
 			System.out.println(Thread.currentThread().getName());
@@ -33,8 +32,6 @@ public class DatePrinterRunnable implements Runnable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if(now>5) break;
-			now++;
 		}
 	}
 
